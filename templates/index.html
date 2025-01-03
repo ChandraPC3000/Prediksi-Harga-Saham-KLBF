@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prediksi Harga Saham PT Kalbe Farma Tbk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Prediksi Harga Saham PT Kalbe Farma Tbk dengan XGBoost</h1>
+        <!-- Form untuk input harga saham -->
+        <form action="/predict" method="POST">
+            <label for="open">Harga Open:</label>
+            <input type="number" id="open" name="open" step="0.01" required><br>
+
+            <label for="high">Harga High:</label>
+            <input type="number" id="high" name="high" step="0.01" required><br>
+
+            <label for="low">Harga Low:</label>
+            <input type="number" id="low" name="low" step="0.01" required><br>
+
+            <label for="close">Harga Close Hari Ini:</label>
+            <input type="number" id="close" name="close" step="0.01" required><br>
+
+            <button type="submit">Prediksi</button>
+        </form>
+
+        <!-- Hasil Prediksi -->
+        {% if prediction_pso %}
+        <div class="result">
+            <h2>Hasil Prediksi</h2>
+            <p>Prediksi Harga dengan PSO: {{ prediction_pso }}</p>
+            <p>Prediksi Harga tanpa PSO: {{ prediction_default }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Hasil Evaluasi PSO -->
+        {% if metrics_pso %}
+        <div class="evaluation">
+            <h2>Hasil Evaluasi Model dengan PSO</h2>
+            <ul>
+                <li>Mean Squared Error (MSE): {{ metrics_pso['mse'] }}</li>
+                <li>Root Mean Squared Error (RMSE): {{ metrics_pso['rmse'] }}</li>
+                <li>Mean Absolute Error (MAE): {{ metrics_pso['mae'] }}</li>
+                <li>Mean Absolute Percentage Error (MAPE): {{ metrics_pso['mape'] }}</li>
+                <li>R-squared: {{ metrics_pso['r2'] }}</li>
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- Hasil Evaluasi Default -->
+        {% if metrics_default %}
+        <div class="evaluation">
+            <h2>Hasil Evaluasi Model tanpa PSO</h2>
+            <ul>
+                <li>Mean Squared Error (MSE): {{ metrics_default['mse'] }}</li>
+                <li>Root Mean Squared Error (RMSE): {{ metrics_default['rmse'] }}</li>
+                <li>Mean Absolute Error (MAE): {{ metrics_default['mae'] }}</li>
+                <li>Mean Absolute Percentage Error (MAPE): {{ metrics_default['mape'] }}</li>
+                <li>R-squared: {{ metrics_default['r2'] }}</li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

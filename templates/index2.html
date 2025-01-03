@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prediksi Harga Saham PT Kalbe Farma Tbk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Prediksi Harga Saham PT Kalbe Farma Tbk dengan XGBoost</h1>
+        <!-- Form untuk input harga saham -->
+        <form action="/predict" method="POST">
+            <label for="close">Harga Close Hari Ini:</label>
+            <input type="number" id="close" name="close" step="0.01" required><br>
+
+            <label for="open">Harga Open:</label>
+            <input type="number" id="open" name="open" step="0.01" required><br>
+
+            <label for="high">Harga High:</label>
+            <input type="number" id="high" name="high" step="0.01" required><br>
+
+            <label for="low">Harga Low:</label>
+            <input type="number" id="low" name="low" step="0.01" required><br>
+
+            <button type="submit">Prediksi</button>
+        </form>
+
+        <!-- Hasil Prediksi -->
+        {% if prediction %}
+        <div class="result">
+            <h2>Hasil Prediksi</h2>
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Hasil Evaluasi -->
+        {% if metrics %}
+        <div class="evaluation">
+            <h2>Hasil Evaluasi</h2>
+            <ul>
+                <li>Mean Squared Error (MSE): {{ metrics['mse'] }}</li>
+                <li>Root Mean Squared Error (RMSE): {{ metrics['rmse'] }}</li>
+                <li>Mean Absolute Error (MAE): {{ metrics['mae'] }}</li>
+                <li>Mean Absolute Percentage Error (MAPE): {{ metrics['mape'] }}</li>
+                <li>R-squared: {{ metrics['r2'] }}</li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+/* General Body Styling */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Container Styling */
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Header Styling */
+
+h1 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+
+/* Label Styling */
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555555;
+    font-weight: bold;
+}
+
+
+/* Input Field Styling */
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+/* Button Styling */
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+
+/* Result Section Styling */
+
+.result,
+.evaluation {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-left: 5px solid #007bff;
+    border-radius: 5px;
+}
+
+
+/* Evaluation List Styling */
+
+.evaluation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.evaluation ul li {
+    margin-bottom: 10px;
+    color: #444444;
+    font-size: 14px;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    button {
+        font-size: 14px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+}
